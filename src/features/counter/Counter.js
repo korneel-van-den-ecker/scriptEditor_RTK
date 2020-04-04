@@ -6,11 +6,16 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
+  testerAsync,
+  tester,
+  selectData,
+
 } from './counterSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useSelector(selectCount);
+  const data = useSelector(selectData);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
@@ -54,6 +59,13 @@ export function Counter() {
         >
           Add Async
         </button>
+        <button
+          className={styles.asyncButton}
+          onClick={() => dispatch(testerAsync())}
+        >
+          APi call
+        </button>
+        <p>{data}</p>
       </div>
     </div>
   );
